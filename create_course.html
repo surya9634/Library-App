@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Course</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Create a New Course</h1>
+        <form action="{{ url_for('create_course') }}" method="POST">
+            <div class="form-group">
+                <input type="text" name="topic" placeholder="Enter Course Topic" required>
+            </div>
+            <button type="submit" class="futuristic-button">Create Course</button>
+        </form>
+    </div>
+</body>
+</html>

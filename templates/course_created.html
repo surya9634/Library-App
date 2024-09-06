@@ -1,0 +1,14 @@
+# {{ topic }} Course
+
+## Course Outline
+{{ course_outline }}
+{% for lesson in lessons %}
+## Lesson
+{{ lesson }}
+{% endfor %}
+
+{% for quiz in quizzes %}
+## Quiz
+{{ quiz }}
+
+{% endfor %}

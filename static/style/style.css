@@ -1,0 +1,60 @@
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.futuristic-container {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.futuristic-title {
+    font-size: 2.5rem;
+    color: #00d1ff;
+    text-shadow: 0 0 10px rgba(0, 209, 255, 0.7);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.futuristic-content {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(0, 209, 255, 0.3);
+}
+
+.futuristic-subtitle,
+.futuristic-lesson-title {
+    font-size: 1.8rem;
+    color: #ff79c6;
+    text-shadow: 0 0 5px rgba(255, 121, 198, 0.7);
+    margin-bottom: 10px;
+}
+
+.futuristic-pre {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 10px;
+    color: #f8f8f2;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    white-space: pre-wrap;
+}
+
+.futuristic-content:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease-in-out;
+}

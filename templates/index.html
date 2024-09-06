@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.0/dist/showdown.min.js"></script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #1f1f1f, #121212);
+      color: #f1f1f1;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .futuristic-container {
+      text-align: center;
+      padding: 30px;
+      margin: auto;
+      max-width: 800px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 255, 234, 0.4), 0 0 40px rgba(0, 255, 234, 0.6);
+    }
+
+    .futuristic-title {
+      font-size: 3.5rem;
+      color: #0abde3;
+      text-shadow: 0 0 15px rgba(10, 189, 227, 0.8);
+      margin-bottom: 20px;
+    }
+
+    .search-box {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .search-box input[type="text"] {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #0abde3;
+      background-color: #222f3e;
+      color: #00d2d3;
+      width: 300px;
+      transition: all 0.3s ease;
+      text-align: center;
+      outline: none;
+      margin-right: 10px;
+    }
+
+    .search-box input[type="text"]::placeholder {
+      color: #00d2d3;
+    }
+
+    .search-box input[type="text"]:focus {
+      border-color: #00d2d3;
+      background-color: #0abde3;
+      color: #222f3e;
+      box-shadow: 0 0 10px #0abde3, 0 0 40px #0abde3, 0 0 80px #0abde3;
+    }
+
+    .futuristic-button {
+      background-color: #222f3e;
+      color: #00d2d3;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 30px;
+    }
+
+    .futuristic-button:hover {
+      background-color: #0abde3;
+      color: #222f3e;
+      box-shadow: 0 0 10px #0abde3, 0 0 40px #0abde3, 0 0 80px #0abde3;
+    }
+
+    .futuristic-content {
+      background-color: #333;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: inset 0 0 20px #00FFEA, 0 0 10px rgba(0, 255, 234, 0.5);
+      margin-bottom: 20px;
+      max-height: 400px;
+      overflow-y: auto;
+      color: #eeeeee;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
+    }
+
+    .futuristic-content:hover {
+      transform: translateY(-5px);
+      box-shadow: inset 0 0 20px #0abde3, 0 0 15px #00FFEA, 0 0 20px rgba(10, 189, 227, 0.7);
+    }
+
+    /* Custom scrollbar */
+    .futuristic-content::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    .futuristic-content::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #0abde3, #00FFEA);
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0, 255, 234, 0.5), 0 0 20px rgba(10, 189, 227, 0.5);
+    }
+
+    .futuristic-content::-webkit-scrollbar-track {
+      background-color: #1f1f1f;
+      border-radius: 6px;
+    }
+
+    .futuristic-content h1, .futuristic-content h2, .futuristic-content h3, .futuristic-content h4, .futuristic-content h5, .futuristic-content h6 {
+      color: #00FFEA;
+      text-shadow: 0 0 10px #00FFEA, 0 0 20px #00FFEA;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .futuristic-content p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .futuristic-content ul, .futuristic-content ol {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    .futuristic-content li {
+      margin-bottom: 10px;
+    }
+
+    .futuristic-content code {
+      background-color: #1e272e;
+      color: #f1f1f1;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    .futuristic-content pre {
+      background-color: #1e272e;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      color: #00d2d3;
+      margin-bottom: 20px;
+    }
+
+    .futuristic-content a {
+      color: #0abde3;
+      text-decoration: underline;
+    }
+
+    .futuristic-content blockquote {
+      border-left: 4px solid #00d2d3;
+      padding-left: 15px;
+      margin-left: 0;
+      color: #cccccc;
+      font-style: italic;
+    }
+
+    .futuristic-content img, .futuristic-content table {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="futuristic-container">
+    <h1 class="futuristic-title">Generate Course</h1>
+
+    <div class="search-box">
+      <input type="text" id="input_box" placeholder="Enter Course Title">
+      <button class="futuristic-button" onclick="generate()">Generate</button>
+    </div>
+
+    <div id="result" class="futuristic-content"></div>
+  </div>
+  
+  <script>
+    var converter = new showdown.Converter();
+    function generate() {
+      $('#result').text("Generating...");
+      $.get("http://127.0.0.1:5000/course-created", { topic: $('#input_box').val() }, function(data, status) {
+        var htmlContent = converter.makeHtml(data);
+        $('#result').html(htmlContent);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+flask
+PyQt5
+webscout

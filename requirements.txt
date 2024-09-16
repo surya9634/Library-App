@@ -1,3 +1,5 @@
+webscout
 flask
 PyQt5
-webscout
+PyQtWebEngine
+rich

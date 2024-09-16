@@ -1,6 +1,6 @@
 import os
 from rich.console import Console
-from webscout import LLAMA3
+from webscout import X0GPT
 from webscout import exceptions
 import re
 
@@ -22,23 +22,21 @@ You are an exceptionally knowledgeable and patient AI tutor, capable of teaching
 Your goal is to ensure that learners gain a complete and nuanced understanding of the topic, equipping them with the knowledge to apply concepts in various contexts and to pursue further learning independently.
 """
 
-# Initialize LLAMA3 API clients
-LLAMA3_client_model_1 = LLAMA3(
+# Initialize X0GPT API clients
+X0GPT_client_model_1 = X0GPT(
     is_conversation=False,
     timeout=1000000,
     max_tokens=8028,  # Adjust as needed
     intro=system_prompt,
-    system=system_prompt,
-    model='llama3-8b'
+#    model='X0GPT-8b'
 )
 
-LLAMA3_client_model_2 = LLAMA3(
+X0GPT_client_model_2 = X0GPT(
     is_conversation=False,
     timeout=1000000,
     max_tokens=8028,  # Adjust as needed
     intro=system_prompt,
-    system=system_prompt,
-    model='llama3-8b'
+#    model='X0GPT-8b'
 )
 
 def generate_course(topic: str) -> dict:
@@ -88,7 +86,7 @@ def generate_course(topic: str) -> dict:
     [Comprehensive summary and future directions]
     """
     try:
-        course_response = LLAMA3_client_model_1.chat(prompt=course_prompt)
+        course_response = X0GPT_client_model_1.chat(prompt=course_prompt)
         return {"course_outline": course_response}
     except exceptions.FailedToGenerateResponseError as e:
         return {"error": f"Failed to generate course outline: {e}"}
@@ -145,7 +143,7 @@ def generate_lesson(course_topic: str, subtopic: str) -> dict:
     Format your response using markdown for better readability and structure. Use headings, subheadings, bullet points, and numbered lists to organize the content clearly.
     """
     try:
-        lesson_response = LLAMA3_client_model_1.chat(prompt=lesson_prompt)
+        lesson_response = X0GPT_client_model_1.chat(prompt=lesson_prompt)
         return {"lesson_content": lesson_response}
     except exceptions.FailedToGenerateResponseError as e:
         return {"error": f"Failed to generate lesson content: {e}"}
@@ -185,7 +183,7 @@ def generate_quiz(course_topic: str, subtopic: str) -> dict:
     Format your response using markdown for better readability and structure. Use headings and subheadings to organize the content clearly.
     """
     try:
-        quiz_response = LLAMA3_client_model_2.chat(prompt=quiz_prompt)
+        quiz_response = X0GPT_client_model_2.chat(prompt=quiz_prompt)
         return {"quiz_content": quiz_response}
     except exceptions.FailedToGenerateResponseError as e:
         return {"error": f"Failed to generate quiz content: {e}"}

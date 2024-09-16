@@ -1,3 +1,5 @@
+wheels
+setuptools
 webscout
 flask
 PyQt5
